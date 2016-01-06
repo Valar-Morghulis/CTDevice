@@ -4,6 +4,7 @@
 #import <UIKit/UIKit.h>
 
 #define IS_IPHONE5_OR_LATER       [CTDevice isIphone5OrLater]
+#define IS_IPHONE6_OR_LATER       [CTDevice isIphone6OrLater]
 #define IS_IOS7_OR_LATER      [CTDevice isIOS7OrLater]
 
 
@@ -23,6 +24,10 @@ typedef enum CTDeviceType_Enum
     CTDeviceTypeIPhone5S,
     CTDeviceTypeIPhone6Plus,
     CTDeviceTypeIPhone6,
+    CTDeviceTypeIPhone6s,
+    CTDeviceTypeIPhone6sPlus,
+    //
+    CTDeviceTypeIPhoneOthers,
    
     //iPod Touch
     CTDeviceTypeIPodTouch1G = 20000,
@@ -30,16 +35,21 @@ typedef enum CTDeviceType_Enum
     CTDeviceTypeIPodTouch3G,
     CTDeviceTypeIPodTouch4G,
     CTDeviceTypeIPodTouch5G,
+    //
+    CTDeviceTypeIPodOthers,
 
     //iPad
     CTDeviceTypeIPad1G = 30000,
     CTDeviceTypeIPad2,
     CTDeviceTypeIPadMini1G,
     CTDeviceTypeIPad3,
-    CTDeviceTypeIPad4,
+    CTDeviceTypeIPad4, 
     CTDeviceTypeIPadAir,
     CTDeviceTypeIPadMini2G,
     //
+    CTDeviceTypeIPadOthers,
+    
+    //others
     CTDeviceTypeOthers = 40000,
     
 }CTDeviceType;
@@ -50,6 +60,7 @@ typedef enum CTDeviceType_Enum
 
 +(CTDeviceType)deviceType;
 +(BOOL)isIphone5OrLater;
++(BOOL)isIphone6OrLater;
 +(BOOL)isIOS7OrLater;
 @end
 

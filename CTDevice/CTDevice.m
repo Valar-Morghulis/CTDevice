@@ -27,12 +27,18 @@
     if ([deviceString isEqualToString:@"iPhone6,2"]) return CTDeviceTypeIPhone5S;//@"iPhone 5s (A1457/A1518/A1528/A1530)";
     if ([deviceString isEqualToString:@"iPhone7,1"]) return CTDeviceTypeIPhone6Plus;//@"iPhone 6 Plus (A1522/A1524)";
     if ([deviceString isEqualToString:@"iPhone7,2"]) return CTDeviceTypeIPhone6;//@"iPhone 6 (A1549/A1586)";
+    if ([deviceString isEqualToString:@"iPhone8,1"])   return CTDeviceTypeIPhone6s;
+    if ([deviceString isEqualToString:@"iPhone8,2"])   return CTDeviceTypeIPhone6sPlus;
+    if ([deviceString hasPrefix:@"iPhone"])return CTDeviceTypeIPhoneOthers;
+    
     
     if ([deviceString isEqualToString:@"iPod1,1"])   return CTDeviceTypeIPodTouch1G;//@"iPod Touch 1G (A1213)";
     if ([deviceString isEqualToString:@"iPod2,1"])   return CTDeviceTypeIPodTouch2G;//@"iPod Touch 2G (A1288)";
     if ([deviceString isEqualToString:@"iPod3,1"])   return CTDeviceTypeIPodTouch3G;//@"iPod Touch 3G (A1318)";
     if ([deviceString isEqualToString:@"iPod4,1"])   return CTDeviceTypeIPodTouch4G;//@"iPod Touch 4G (A1367)";
     if ([deviceString isEqualToString:@"iPod5,1"])   return CTDeviceTypeIPodTouch5G;//@"iPod Touch 5G (A1421/A1509)";
+    if ([deviceString hasPrefix:@"iPod"])return CTDeviceTypeIPodOthers;
+    
     
     if ([deviceString isEqualToString:@"iPad1,1"])   return CTDeviceTypeIPad1G;//@"iPad 1G (A1219/A1337)";
     if ([deviceString isEqualToString:@"iPad2,1"])   return CTDeviceTypeIPad2;//@"iPad 2 (A1395)";
@@ -56,6 +62,8 @@
     if ([deviceString isEqualToString:@"iPad4,4"])   return CTDeviceTypeIPadMini2G;//@"iPad Mini 2G (A1489)";
     if ([deviceString isEqualToString:@"iPad4,5"])   return CTDeviceTypeIPadMini2G;//@"iPad Mini 2G (A1490)";
     if ([deviceString isEqualToString:@"iPad4,6"])   return CTDeviceTypeIPadMini2G;//@"iPad Mini 2G (A1491)";
+    if ([deviceString hasPrefix:@"iPad"])return CTDeviceTypeIPadOthers;
+    
     
     if ([deviceString isEqualToString:@"i386"])      return CTDeviceTypeSimulator_i386;//@"iPhone Simulator";
     if ([deviceString isEqualToString:@"x86_64"])    return CTDeviceTypeSimulator_x86_64;//@"iPhone Simulator";
@@ -67,7 +75,12 @@
 +(BOOL)isIphone5OrLater
 {
     CTDeviceType type = [CTDevice deviceType];
-    return (type >= CTDeviceTypeIPhone5 && type < CTDeviceTypeIPodTouch1G);
+    return (type >= CTDeviceTypeIPhone5 && type <= CTDeviceTypeIPhoneOthers);
+}
++(BOOL)isIphone6OrLater
+{
+    CTDeviceType type = [CTDevice deviceType];
+    return (type >= CTDeviceTypeIPhone6 && type <= CTDeviceTypeIPhoneOthers);
 }
 +(BOOL)isIOS7OrLater
 {
